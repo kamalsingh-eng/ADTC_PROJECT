@@ -1,0 +1,10 @@
+start crontab for the secheduling the script 
+
+hit the command crontab -e 
+
+then select 1 
+
+
+and add the following command 
+
+@reboot sleep 10 && telegraf --config telegraf.conf

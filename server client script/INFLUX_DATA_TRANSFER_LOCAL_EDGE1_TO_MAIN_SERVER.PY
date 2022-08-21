@@ -5,7 +5,9 @@ import pandas as pd
 #df = pd.DataFrame.from_records(influx_points_list)
 
 
-client = InfluxDBClient('localhost', 8086, '', '', 'EM_DATA')
+client = InfluxDBClient('192.168.0.241', 8086, '', '', 'EM_DATA2')
+
+client1 = InfluxDBClient('localhost', 8086, '', '', 'EM_DATA')
 #client.create_database('example')
 a = client.query("select * from em_live1 limit 100")
 #df = pd.DataFrame.from_records(influx_points_list)
@@ -26,12 +28,22 @@ for metric in a:
         'measurement': 'local_edge1',
         'time': metric[1],
         "fields" : {
-             'N1': metric[2],
-             'N2':metric[3],
-             'N3':metric[4]
+             'ID': metric[2],
+             'N1':metric[3],
+             'N2':metric[6],
+             'N3':metric[7],
+             'N4':metric[8],
+             'N5': metric[9],
+             'N6':metric[10],
+             'N7':metric[11],
+             'N8':metric[12],
+             'N9':metric[13],
+             'N10': metric[4],
+             'N11':metric[5],
+            
         }
     }]
-    client.write_points(influx_metric)
+    client1.write_points(influx_metric)
 
 print("done")
 print("please check")
